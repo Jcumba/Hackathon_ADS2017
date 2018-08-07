@@ -1,7 +1,15 @@
 package Model;
 
 public class ServiciosModel {
-    String nombre,estado;
+    String codigo,nombre,estado;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     public String getNombre() {
         return nombre;

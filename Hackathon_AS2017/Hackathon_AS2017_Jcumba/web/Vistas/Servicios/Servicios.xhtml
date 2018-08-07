@@ -9,13 +9,34 @@
     <h:head>
         <title>Servicios</title>
     </h:head>
-    <h:body>
-        <h:form>
+<h:body>
+        <h:form id="form">
 
             <p:commandButton value="Regresar" onclick="window.history.back();"/>
             <br/>
             <br/>
-        </h:form>
+            <p:dataTable id="DataServicio"
+                         value="#{serviciosController.lstServic}"
+                         var="servic"
+                         rowKey="#{servic.codigo}"
+                         selectionMode="single" 
+                         selection="#{serviciosController.serviciosModel}"
+                         reflow="true" rows="15" paginator="true"
+                         scrollWidth="610" 
+                         >   
+                <f:facet name="header">
+                    Servicios Registrados
+                </f:facet>
 
+
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{servic.codigo}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{servic.nombre}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
     </h:body>
 </html>

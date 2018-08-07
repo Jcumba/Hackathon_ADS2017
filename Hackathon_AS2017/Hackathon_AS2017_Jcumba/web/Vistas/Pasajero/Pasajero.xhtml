@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Clientes</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+
+            <p:commandButton value="Regresar" onclick="window.history.back();"/>
+            <br/>
+            <br/>
+            <p:dataTable id="DataPasaj"
+                         value="#{pasajeroController.lstPasajero}"
+                         var="pasajero"
+                         rowKey="#{pasajero.codigo}"
+                         selectionMode="single" 
+                         selection="#{pasajeroController.pasajeroModel}"
+                         reflow="true" rows="15" paginator="true"
+                         scrollWidth="610" 
+                         >   
+                <f:facet name="header">
+                    Clientes Registrados
+                </f:facet>
+
+
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{pasajero.codigo}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{pasajero.nombre}" />
+                </p:column>
+
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{pasajero.apellido}" />
+                </p:column>
+
+                <p:column headerText="Tipo de documento">
+                    <h:outputText value="#{pasajero.tipodocumento}" />
+                </p:column>
+
+                <p:column headerText="Documento">
+                    <h:outputText value="#{pasajero.documento}" />
+                </p:column>
+
+
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
+<!--               KEYFILTER EN SELECT ONE MENU EN DATATABLE COLUM
+
+<p:column filterBy="{Client.nombre}" headerText="Nombre" footerText="exact" filterMatchMode="exact">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('Client').filter()" >
+                            <f:selectItem itemLabel="Buscar Nombre" itemValue="{null}" noSelectionOption="true" />
+                            <f:selectItems value="{clienteController.lstClient}" var="client" itemLabel="{client.nombre}"  itemValue="{client.codigo}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="{Client.nombre}" />
+                </p:column>
+
+-->

@@ -15,13 +15,15 @@ public class ServiciosDao extends DAO implements IServicioDao {
         ResultSet rs;
         try {
             this.Conectar();
-            PreparedStatement ps = this.getCn().prepareStatement("SELECT * FROM vw_listServ");
+            PreparedStatement ps = this.getCn().prepareStatement("SELECT * FROM vw_listServ ORDER BY cod_servic");
             rs = ps.executeQuery();
             lista = new ArrayList();
             ServiciosModel Model;
             while (rs.next()) {
                 Model = new ServiciosModel();
+                Model.setCodigo(rs.getString("cod_servic"));
                 Model.setNombre(rs.getString("nom_servic"));
+                lista.add(Model);
             }
             return lista;
         } catch (SQLException e) {
