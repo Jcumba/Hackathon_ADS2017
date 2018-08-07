@@ -18,5 +18,15 @@ SELECT * FROM SERVICIOS
 WHERE estado_servic like 'A'
 GO
 
-SELECT * FROM vw_listServ
+SELECT * FROM vw_listServ ORDER BY cod_servic
+GO
+
+----- Sucursal -----
+
+CREATE VIEW vw_listSucursal AS
+SELECT cod_sucur,nom_sucur FROM Sucursal 
+WHERE estado_surc like 'A'
+GO
+
+SELECT * FROM vw_listSucursal ORDER BY cod_sucur
 GO
