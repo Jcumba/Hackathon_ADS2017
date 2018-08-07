@@ -1,8 +1,7 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2018-07-24 15:11:22.427
+
 CREATE DATABASE BDHackathon;
 USE BDHackathon;
--- tables
+
 -- Table: BOLETA
 CREATE TABLE BOLETA (
     cod_bolet int  NOT NULL IDENTITY,
