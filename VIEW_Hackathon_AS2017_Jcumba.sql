@@ -30,3 +30,13 @@ GO
 
 SELECT * FROM vw_listSucursal ORDER BY cod_sucur
 GO
+
+----- Pasajero -----
+
+CREATE VIEW vw_listPasajero AS
+SELECT cod_pasaj ,nom_pasaj, ape_pasaj, tipdocu_pasaj, docu_pasaj FROM Pasajero 
+WHERE estado_pasaj like 'A'
+GO
+
+SELECT * FROM vw_listPasajero ORDER BY cod_pasaj
+GO
