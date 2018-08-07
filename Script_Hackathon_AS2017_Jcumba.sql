@@ -29,12 +29,13 @@ CREATE TABLE MANIFIESTO (
 );
 
 -- Table: PASAJERO
-CREATE TABLE PASAJERO (
+ALTER TABLE PASAJERO (
     cod_pasaj int  NOT NULL IDENTITY,
     nom_pasaj varchar(50)  NOT NULL,
     ape_pasaj varchar(50)  NOT NULL,
     tipdocu_pasaj varchar(50)  NOT NULL,
     docu_pasaj varchar(50)  NOT NULL,
+    estado_pasaj char(1) NOT NULL,
     CONSTRAINT PASAJERO_pk PRIMARY KEY  (cod_pasaj)
 );
 
