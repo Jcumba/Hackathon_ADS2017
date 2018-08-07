@@ -15,14 +15,14 @@ public class SucursalDao extends DAO implements ISucursalDao {
         List<SucursalModel> lista;
         ResultSet rs;
         try {
-            PreparedStatement ps = this.getCn().prepareCall("SELECT * FROM vw_listUser ORDER BY cod_usua");
+            PreparedStatement ps = this.getCn().prepareCall("SELECT * FROM vw_listSucursal ORDER BY cod_sucur");
             rs = ps.executeQuery();
             lista = new ArrayList<>();
             SucursalModel Model;
             while (rs.next()) {
                 Model = new SucursalModel();
-                Model.setCodigo(rs.getString("cod_usua"));
-                Model.setNombre(rs.getString("nom_usua"));
+                Model.setCodigo(rs.getString("cod_sucur"));
+                Model.setNombre(rs.getString("nom_sucur"));
                 lista.add(Model);
             }
             return lista;

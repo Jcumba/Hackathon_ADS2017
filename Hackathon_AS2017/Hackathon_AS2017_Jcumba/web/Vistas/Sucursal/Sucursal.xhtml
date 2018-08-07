@@ -10,12 +10,33 @@
         <title>Sucursales</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id="form">
 
             <p:commandButton value="Regresar" onclick="window.history.back();"/>
             <br/>
             <br/>
-        </h:form>
+            <p:dataTable id="DataSucursal"
+                         value="#{sucursalController.lstSucursal}"
+                         var="Sucur"
+                         rowKey="#{Sucur.codigo}"
+                         selectionMode="single" 
+                         selection="#{sucursalController.sucursalModel}"
+                         reflow="true" rows="15" paginator="true"
+                         scrollWidth="610" 
+                         >   
+                <f:facet name="header">
+                    Clientes Registrados
+                </f:facet>
 
+
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{Sucur.codigo}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{Sucur.nombre}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
     </h:body>
 </html>
