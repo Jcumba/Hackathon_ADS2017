@@ -2,14 +2,26 @@ package Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class DAO {
+
     private Connection cn;
-    
-    public void Conectar() throws Exception{
-    
-    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-    cn = DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=BDHackathon","sa","vallegrande2018");
+
+    public void Conectar() throws Exception {
+            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            Class.forName(driver).newInstance();
+            cn = DriverManager.getConnection("jdbc:sqlserver://35.196.139.63;databaseName=BDHackathon", "SA", "Vallegrande2018");
+
+    }
+
+    public void Cerrar() throws SQLException {      //Cerrar la coneccion
+        if (cn != null) {
+            if (cn.isClosed() == false) {
+                cn.close();
+            }
+        }
     }
 
     public Connection getCn() {
@@ -19,7 +31,5 @@ public class DAO {
     public void setCn(Connection cn) {
         this.cn = cn;
     }
-    
-    
-    
+
 }

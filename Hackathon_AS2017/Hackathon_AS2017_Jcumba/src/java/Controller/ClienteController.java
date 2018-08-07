@@ -4,7 +4,10 @@ import Dao.ClienteDao;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import Model.ClienteModel;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 
 import javax.inject.Named;
@@ -12,16 +15,17 @@ import javax.inject.Named;
 @Named(value = "clienteController")
 @SessionScoped
 public class ClienteController implements Serializable {
-
+    
+    List<ClienteModel> lstClient = new ArrayList();
     ClienteModel clienteModel = new ClienteModel();
-    private List<ClienteModel> lstClient;
 
     @PostConstruct
     public void iniciar() {
         try {
             Listar();
             limpiar();
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

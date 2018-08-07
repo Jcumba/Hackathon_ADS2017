@@ -1,8 +1,16 @@
 package Model;
 
 public class ClienteModel {
-    String nombre, apellido, dni, nacimiento, estado;
+    String codigo, nombre, apellido, dni, nacimiento, estado;
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getNombre() {
         return nombre;
     }
