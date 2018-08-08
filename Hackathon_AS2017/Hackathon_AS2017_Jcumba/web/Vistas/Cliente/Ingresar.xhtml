@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head> 
+    <h:body>
+        <p:dialog id="DialIngresar"
+                  widgetVar="newIngresar"
+                  modal="true"
+                  >
+            <h:form id="AddForm" >
+                <p:messages id="msgs" />
+                <h:panelGrid columns="3" cellpadding="5" >
+
+                    <h:outputLabel for="Nombre" value="Nombre: "/>
+                    <p:inputText id="Nombre" value="#{clienteController.clienteModel.nombre}" required="true"
+                                 requiredMessage="Se requiere dato para registrar!">
+                        <p:keyFilter regEx="/[a-z_]/i"/>
+                    </p:inputText>
+                    <p:outputLabel>
+                        <p:message for="Nombre" id="msgNombre" display="icon" />
+                    </p:outputLabel>
+                    
+
+                    <h:outputLabel for="Apellido" value="Apellido: "/>
+                    <p:inputText id="Apellido" value="#{clienteController.clienteModel.apellido}" required="true"
+                                 requiredMessage="Se requiere dato para registrar!">
+                        <p:keyFilter regEx="/[a-z_]/i"/>
+                    </p:inputText>
+                    <p:outputLabel>
+                        <p:message for="Apellido" id="msgApellido" display="icon" />
+                    </p:outputLabel>
+                    
+                    
+                    <h:outputLabel for="fecnac" value="Fecha Nacimiento: "/>
+                    <p:inputText id="fecnac" value="#{clienteController.clienteModel.nacimiento}" required="true"
+                                 requiredMessage="Se requiere dato para registrar!">
+                        <p:keyFilter regEx="/[a-z_]/i"/>
+                    </p:inputText>
+                    <p:outputLabel>
+                        <p:message for="fecnac" id="msgfecnac" display="icon" />
+                    </p:outputLabel>
+
+                    
+                    <h:outputLabel for="dni" value="Dni: "/>
+                    <p:inputText id="dni" value="#{clienteController.clienteModel.dni}" required="true"
+                                 requiredMessage="Se requiere dato para registrar!" maxlength="8">
+                        <p:keyFilter regEx="/[\d\-\.]/"/>
+                        <f:validateLength minimum="8"/>
+                        <p:ajax update="msgdni" event="keyup" />
+                    </p:inputText>
+                    <p:outputLabel>
+                        <p:message for="dni" id="msgdni" display="icon" />
+                    </p:outputLabel>
+                    
+
+                    
+                    
+                    <p:commandButton value="Guardar"  icon="ui-icon-check" 
+                                     actionListener="#{clienteController.ingresar()}"
+                                     oncomplete="growlColour(); handleLoginRequest(xhr, status, args,'newIngresar')"
+                                     update="AddForm :form" >
+                        <p:confirm header="Confirmar" message="¿Estás seguro?" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="Cancelar"
+                                     icon="ui-icon-close" 
+                                     onclick="PF('Ingresar').hide()"
+                                     immediate="true"/>
+
+
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" oncomplete="growlColour();"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+
+
+
+
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
+

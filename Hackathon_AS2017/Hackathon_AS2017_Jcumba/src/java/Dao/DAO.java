@@ -12,7 +12,7 @@ public class DAO {
     public void Conectar() throws Exception {
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             Class.forName(driver).newInstance();
-            cn = DriverManager.getConnection("jdbc:sqlserver://35.196.139.63;databaseName=BDHackathon", "SA", "Vallegrande2018");
+            cn = DriverManager.getConnection("jdbc:sqlserver://35.196.239.151;databaseName=BDHackathon", "root", "root");
 
     }
 

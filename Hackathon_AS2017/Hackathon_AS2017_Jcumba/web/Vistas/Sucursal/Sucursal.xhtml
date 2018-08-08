@@ -15,6 +15,10 @@
             <p:commandButton value="Regresar" onclick="window.history.back();"/>
             <br/>
             <br/>
+            <p:commandButton value="Registrar Sucursal" actionListener="#{sucursalController.limpiar()}" 
+                             update="AddForm" oncomplete="PF('newIngresar').show();"/>
+            <br/>
+            <br/>
             <p:dataTable id="DataSucursal"
                          value="#{sucursalController.lstSucursal}"
                          var="Sucur"
@@ -37,6 +41,15 @@
                     <h:outputText value="#{Sucur.nombre}" />
                 </p:column>
             </p:dataTable>
+            
+            <p:contextMenu for="DataSucursal">
+                <p:menuitem value="Editar" oncomplete="PF('Actualizar').show();" update=":UpdForm"/>
+                <p:menuitem value="Eliminar" update="form"/>
+            </p:contextMenu>
+            
         </h:form>
+
+        <ui:include src="Ingresar.xhtml"/>
+        <ui:include src="Actualizar.xhtml"/>
     </h:body>
 </html>

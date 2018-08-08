@@ -9,10 +9,14 @@
     <h:head>
         <title>Servicios</title>
     </h:head>
-<h:body>
+    <h:body>
         <h:form id="form">
 
             <p:commandButton value="Regresar" onclick="window.history.back();"/>
+            <br/>
+            <br/>
+            <p:commandButton value="Registrar Servicios" actionListener="#{serviciosController.limpiar()}" 
+                             update="AddForm" oncomplete="PF('newIngresar').show();"/>
             <br/>
             <br/>
             <p:dataTable id="DataServicio"
@@ -37,6 +41,15 @@
                     <h:outputText value="#{servic.nombre}" />
                 </p:column>
             </p:dataTable>
+            
+            <p:contextMenu for="DataServicio">
+                <p:menuitem value="Editar" oncomplete="PF('Actualizar').show();" update=":UpdForm"/>
+                <p:menuitem value="Eliminar" update="form"/>
+            </p:contextMenu>
+            
         </h:form>
+
+        <ui:include src="Ingresar.xhtml"/>
+        <ui:include src="Actualizar.xhtml"/>
     </h:body>
 </html>

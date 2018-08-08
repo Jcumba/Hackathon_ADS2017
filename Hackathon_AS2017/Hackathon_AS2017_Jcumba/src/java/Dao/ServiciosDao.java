@@ -35,7 +35,7 @@ public class ServiciosDao extends DAO implements IServicioDao {
     public void Ingresar(ServiciosModel Model) throws Exception {
         this.Conectar();
         try {
-            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_regservicio ?,?");
+            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_regservicio ?,'A'");
             ps.setString(1, Model.getNombre());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -47,12 +47,29 @@ public class ServiciosDao extends DAO implements IServicioDao {
     public void Actualizar(ServiciosModel Model) throws Exception {
         this.Conectar();
         try {
-            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_actservicio ?");
+            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_actservicio ?,?");
             ps.setString(1, Model.getNombre());
+            ps.setString(2, Model.getCodigo());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
         }
     }
+    
+        public void EliminarEsp(ServiciosModel Model) throws Exception {
+        this.Conectar();
+        try {
+            String sql = "";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, Model.getCodigo());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.Cerrar();
+        }
+    }
+    
 
 }

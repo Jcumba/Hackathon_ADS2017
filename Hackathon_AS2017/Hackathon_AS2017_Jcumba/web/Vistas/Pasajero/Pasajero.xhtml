@@ -15,6 +15,10 @@
             <p:commandButton value="Regresar" onclick="window.history.back();"/>
             <br/>
             <br/>
+            <p:commandButton value="Registrar Pasajero" actionListener="#{pasajeroController.limpiar()}" 
+                             update="AddForm" oncomplete="PF('newIngresar').show();"/>
+            <br/>
+            <br/>
             <p:dataTable id="DataPasaj"
                          value="#{pasajeroController.lstPasajero}"
                          var="pasajero"
@@ -49,23 +53,16 @@
                     <h:outputText value="#{pasajero.documento}" />
                 </p:column>
 
-
-
             </p:dataTable>
+            
+            <p:contextMenu for="DataPasaj">
+                <p:menuitem value="Editar" oncomplete="PF('Actualizar').show();" update=":UpdForm"/>
+                <p:menuitem value="Eliminar" update="form"/>
+            </p:contextMenu>
+            
         </h:form>
+
+        <ui:include src="Ingresar.xhtml"/>
+        <ui:include src="Actualizar.xhtml"/>
     </h:body>
 </html>
-
-<!--               KEYFILTER EN SELECT ONE MENU EN DATATABLE COLUM
-
-<p:column filterBy="{Client.nombre}" headerText="Nombre" footerText="exact" filterMatchMode="exact">
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('Client').filter()" >
-                            <f:selectItem itemLabel="Buscar Nombre" itemValue="{null}" noSelectionOption="true" />
-                            <f:selectItems value="{clienteController.lstClient}" var="client" itemLabel="{client.nombre}"  itemValue="{client.codigo}" />
-                        </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText value="{Client.nombre}" />
-                </p:column>
-
--->

@@ -31,7 +31,7 @@ public class PasajeroDao extends DAO implements IPasajeroDao {
             return lista;
         } catch (SQLException e) {
             throw e;
-        }finally {
+        } finally {
             this.Cerrar();
         }
     }
@@ -40,8 +40,11 @@ public class PasajeroDao extends DAO implements IPasajeroDao {
     public void Ingresar(PasajeroModel Model) throws Exception {
         this.Conectar();
         try {
-            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_regusuario ?,?,?,?,'A'");
+            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_regpasajero ?,?,?,?,'A'");
             ps.setString(1, Model.getNombre());
+            ps.setString(2, Model.getApellido());
+            ps.setString(3, Model.getTipodocumento());
+            ps.setString(4, Model.getDocumento());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -52,9 +55,12 @@ public class PasajeroDao extends DAO implements IPasajeroDao {
     public void Actualizar(PasajeroModel Model) throws Exception {
         this.Conectar();
         try {
-            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_actusuario ?,?,?,?");
+            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_actpasajero ?,?,?,?,?");
             ps.setString(1, Model.getNombre());
-
+            ps.setString(2, Model.getApellido());
+            ps.setString(3, Model.getTipodocumento());
+            ps.setString(4, Model.getDocumento());
+            ps.setString(5, Model.getCodigo());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;

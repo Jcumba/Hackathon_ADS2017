@@ -28,7 +28,7 @@ public class SucursalDao extends DAO implements ISucursalDao {
             return lista;
         } catch (SQLException e) {
             throw e;
-        }finally {
+        } finally {
             this.Cerrar();
         }
     }
@@ -37,7 +37,7 @@ public class SucursalDao extends DAO implements ISucursalDao {
     public void Ingresar(SucursalModel Model) throws Exception {
         this.Conectar();
         try {
-            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_regusuario ?,?,?,?,'A'");
+            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_regsucursal ?,'A'");
             ps.setString(1, Model.getNombre());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -49,9 +49,9 @@ public class SucursalDao extends DAO implements ISucursalDao {
     public void Actualizar(SucursalModel Model) throws Exception {
         this.Conectar();
         try {
-            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_actusuario ?,?,?,?");
+            PreparedStatement ps = this.getCn().prepareStatement("EXEC sp_actsucursal ?,?");
             ps.setString(1, Model.getNombre());
-
+            ps.setString(2, Model.getCodigo());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
