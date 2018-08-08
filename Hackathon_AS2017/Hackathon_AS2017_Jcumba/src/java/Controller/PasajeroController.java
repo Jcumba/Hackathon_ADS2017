@@ -15,9 +15,11 @@ import javax.inject.Named;
 @Named(value = "pasajeroController")
 @SessionScoped
 public class PasajeroController implements Serializable {
-    
+
     List<PasajeroModel> lstPasajero = new ArrayList();
     PasajeroModel pasajeroModel = new PasajeroModel();
+    private List<PasajeroModel> filtropasajeros;
+    private List<PasajeroModel> lstPasajero2;
 
     @PostConstruct
     public void iniciar() {
@@ -83,6 +85,20 @@ public class PasajeroController implements Serializable {
         this.pasajeroModel = pasajeroModel;
     }
 
-    
-    
+    public List<PasajeroModel> getFiltropasajeros() {
+        return filtropasajeros;
+    }
+
+    public void setFiltropasajeros(List<PasajeroModel> filtropasajeros) {
+        this.filtropasajeros = filtropasajeros;
+    }
+
+    public List<PasajeroModel> getLstPasajero2() {
+        return lstPasajero2;
+    }
+
+    public void setLstPasajero2(List<PasajeroModel> lstPasajero2) {
+        this.lstPasajero2 = lstPasajero2;
+    }
+
 }

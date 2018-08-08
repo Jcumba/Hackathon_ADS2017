@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Usuario</title>
+    </h:head>
+    <h:body>
+
+
+        <h:form id="form">
+            <p:growl id="messages"/>
+
+            <p:commandButton value="Regresar" onclick="window.history.back();"/>
+            <br/>
+            <br/>
+            <p:commandButton value="Registrar Cliente" actionListener="#{usuarioController.limpiar()}" 
+                             update="AddForm" oncomplete="PF('newIngresar').show();"/>
+            <br/>
+            <br/>
+            <p:dataTable id="DataUsuar"
+                         value="#{usuarioController.lstClient}"
+                         var="Usuar"
+                         rowKey="#{Usuar.codigo}"
+                         selectionMode="single" 
+                         selection="#{usuarioController.usuarioModel}"
+                         reflow="true" rows="15" paginator="true"
+                         scrollWidth="610" 
+                         >   
+                <f:facet name="header">
+                    Usuarios Registrados
+                </f:facet>
+
+
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{Usuar.codigo}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{Usuar.nombre}" />
+                </p:column>
+
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{Usuar.apellido}" />
+                </p:column>
+
+                <p:column headerText="F. Nacimiento">
+                    <h:outputText value="#{Usuar.nacimiento}" />
+                </p:column>
+
+                <p:column headerText="Dni">
+                    <h:outputText value="#{Usuar.dni}" />
+                </p:column>
+            </p:dataTable>
+            
+            <p:contextMenu for="DataUsuar">
+                <p:menuitem value="Editar" oncomplete="PF('Actualizar').show();" update=":UpdForm"/>
+                <p:menuitem value="Eliminar" update="form"/>
+            </p:contextMenu>
+            
+        </h:form>
+
+        <ui:include src="Ingresar.xhtml"/>
+        <ui:include src="Actualizar.xhtml"/>
+
+    </h:body>
+</html>
+
+
+
+
+
+<!--               KEYFILTER EN SELECT ONE MENU EN DATATABLE COLUM
+
+<p:column filterBy="{Client.nombre}" headerText="Nombre" footerText="exact" filterMatchMode="exact">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('Client').filter()" >
+                            <f:selectItem itemLabel="Buscar Nombre" itemValue="{null}" noSelectionOption="true" />
+                            <f:selectItems value="{clienteController.lstClient}" var="client" itemLabel="{client.nombre}"  itemValue="{client.codigo}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="{Client.nombre}" />
+                </p:column>
+
+-->
