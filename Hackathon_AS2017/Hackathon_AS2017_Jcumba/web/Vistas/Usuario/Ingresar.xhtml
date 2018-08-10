@@ -33,7 +33,6 @@
                     <h:outputLabel for="fecnac" value="Fecha Nacimiento: "/>
                     <p:inputText id="fecnac" value="#{usuarioController.usuarioModel.nacimiento}" required="true"
                                  requiredMessage="Se requiere dato para registrar!">
-                        <p:keyFilter regEx="/[a-z_]/i"/>
                     </p:inputText>
                     <p:outputLabel/>
 
@@ -54,7 +53,7 @@
                     
                     <p:commandButton value="Guardar"  icon="ui-icon-check" 
                                      actionListener="#{clienteController.ingresar()}"
-                                     oncomplete="growlColour(); handleLoginRequest(xhr, status, args,'newIngresar')"
+                                     oncomplete="handleLoginRequest(xhr, status, args,'newIngresar')"
                                      update="AddForm :form" >
                         <p:confirm header="Confirmar" message="¿Estás seguro?" icon="ui-icon-alert"/>
                     </p:commandButton>
@@ -64,10 +63,8 @@
                                      onclick="PF('Ingresar').hide()"
                                      immediate="true"/>
 
-
-
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" oncomplete="growlColour();"/>
+                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                     </p:confirmDialog>
 

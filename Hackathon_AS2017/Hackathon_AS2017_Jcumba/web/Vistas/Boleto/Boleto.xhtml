@@ -12,6 +12,21 @@
     <h:body>
         <h:form id="form">
 
+            <br/>
+            <br/>
+
+                <h:panelGrid columns="2">
+
+                    
+                    
+                    
+                    
+                </h:panelGrid>
+     
+
+            <br/>
+            <br/>
+
             <p:commandButton value="Regresar" onclick="window.history.back();"/>
             <br/>
             <br/>
@@ -22,6 +37,7 @@
             <p:dataTable id="DataPasaj"
                          value="#{pasajeroController.lstPasajero}"
                          var="pasajero"
+                         widgetVar="tablapasajero"
                          emptyMessage="No se ah encontrado datos del pasajero."
                          rowKey="#{pasajero.codigo}"
                          selectionMode="single" 
@@ -52,7 +68,8 @@
                     <h:outputText value="#{pasajero.tipodocumento}" />
                 </p:column>
 
-                <p:column headerText="Documento">
+
+                <p:column headerText="Documento" filterBy="#{pasajero.documento}">
                     <h:outputText value="#{pasajero.documento}" />
                 </p:column>
 

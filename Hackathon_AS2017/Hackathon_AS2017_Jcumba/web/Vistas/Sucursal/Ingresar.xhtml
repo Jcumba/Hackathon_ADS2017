@@ -18,7 +18,7 @@
                     <h:outputLabel for="Nombre" value="Nombre: "/>
                     <p:inputText id="Nombre" value="#{sucursalController.sucursalModel.nombre}" required="true"
                                  requiredMessage="Se requiere dato para registrar!">
-                        <p:keyFilter regEx="/[a-z_]/i"/>
+                        <p:keyFilter regEx="/[ña-z_]/i"/>
                     </p:inputText>
                     <p:outputLabel>
                         <p:message for="Nombre" id="msgNombre" display="icon" />

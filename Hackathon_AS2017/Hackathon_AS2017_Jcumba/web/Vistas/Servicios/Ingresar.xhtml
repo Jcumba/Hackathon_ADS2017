@@ -16,8 +16,7 @@
                 <h:panelGrid columns="3" cellpadding="5" >
 
                     <h:outputLabel for="Nombre" value="Nombre: "/>
-                    <p:inputText id="Nombre" value="#{serviciosController.serviciosModel.nombre}" required="true"
-                                 requiredMessage="Se requiere dato para registrar!">
+                    <p:inputText id="Nombre" value="#{serviciosController.serviciosModel.nombre}" required="true">
                         <p:keyFilter regEx="/[a-z_]/i"/>
                     </p:inputText>
                     <p:outputLabel>
@@ -27,7 +26,7 @@
                     
                     <p:commandButton value="Guardar"  icon="ui-icon-check" 
                                      actionListener="#{serviciosController.ingresar()}"
-                                     oncomplete="growlColour(); handleLoginRequest(xhr, status, args,'newIngresar')"
+                                     oncomplete="handleLoginRequest(xhr, status, args,'newIngresar')"
                                      update="AddForm :form" >
                         <p:confirm header="Confirmar" message="¿Estás seguro?" icon="ui-icon-alert"/>
                     </p:commandButton>
@@ -40,7 +39,7 @@
 
 
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" oncomplete="growlColour();"/>
+                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                     </p:confirmDialog>
 

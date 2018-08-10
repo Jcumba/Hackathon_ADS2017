@@ -31,8 +31,7 @@
                 <f:facet name="header">
                     Sucursales Registradas
                 </f:facet>
-
-
+            
                 <p:column headerText="Codigo">
                     <h:outputText value="#{Sucur.codigo}" />
                 </p:column>
@@ -41,12 +40,12 @@
                     <h:outputText value="#{Sucur.nombre}" />
                 </p:column>
             </p:dataTable>
-            
+
             <p:contextMenu for="DataSucursal">
                 <p:menuitem value="Editar" oncomplete="PF('Actualizar').show();" update=":UpdForm"/>
                 <p:menuitem value="Eliminar" update="form"/>
             </p:contextMenu>
-            
+
         </h:form>
 
         <ui:include src="Ingresar.xhtml"/>

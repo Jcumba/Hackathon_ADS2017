@@ -24,7 +24,7 @@
 
                     <p:commandButton value="Actualizar"  icon="ui-icon-check" 
                                      actionListener="#{serviciosController.actualizar()}"
-                                     oncomplete="growlColour(); handleLoginRequest(xhr, status, args,'Actualizar')"
+                                     oncomplete="handleLoginRequest(xhr, status, args,'Actualizar')"
                                      update="UpdForm :form">
                         <p:confirm header="Confirmar" message="¿Estás seguro?" icon="ui-icon-alert"/>
                     </p:commandButton>
@@ -37,7 +37,7 @@
 
 
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" oncomplete="growlColour();"/>
+                        <p:commandButton value="Si  " type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                     </p:confirmDialog>
 
